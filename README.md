@@ -4,6 +4,10 @@
 
 um banco de dados relacionados com o envio de txt onde e lido e inserido no banco de dados
 
+# Tecnologias usadas
+
+eu utilizei `python`, `postgres`, `docker` e `django_restframework`
+
 # Rodar localmente a aplicação
 
 execute o comando `python -m venv venv`
