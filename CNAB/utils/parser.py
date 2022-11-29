@@ -2,6 +2,7 @@ import datetime
 
 
 def parserCNAB(cnab: str) -> dict:
+    # Dada a string no txt e cortado de acordo a um padrao
     tipo = cnab[0]
     data = cnab[1:9]
     valor = cnab[9:20]
@@ -14,9 +15,11 @@ def parserCNAB(cnab: str) -> dict:
     format_valor = int(valor) / 100
 
     date = f"{data[:4]}-{data[4:6]}-{data[6:]}"
+
     format_data = datetime.datetime.strptime(date, "%Y-%m-%d")
+
     format_hora = datetime.time(int(hora[:2]), int(hora[2:4]), int(hora[4:]))
-    
+
     return {
         "tipo": int(tipo),
         "data": format_data,

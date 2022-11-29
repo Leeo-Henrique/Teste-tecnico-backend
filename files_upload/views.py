@@ -27,11 +27,13 @@ def process_form(req):
         dono.is_valid(raise_exception=True)
         dono.save()
 
+        # passando o id do dono pedido em serializer
         parsed["dono"] = dono.data["id"]
         cnab = CNABSerializer(data=parsed)
         cnab.is_valid(raise_exception=True)
         cnab.save()
 
+    # dados aos tipos de transaçoes essas sao negativas efetivando pagamentos
     negative_status = [2, 3, 9]
 
     dono_db = Dono_loja.objects.all()
@@ -41,6 +43,7 @@ def process_form(req):
         dono_cnabs = Cnab.objects.all().filter(dono_id=dono.id)
         balance = 0
         operations = []
+
         for cnab in dono_cnabs:
             cnab_dict = model_to_dict(cnab)
             if cnab_dict["tipo"] in negative_status:

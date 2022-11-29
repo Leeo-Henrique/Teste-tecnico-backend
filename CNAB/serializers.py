@@ -21,7 +21,4 @@ class CNABSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         cnab, _ = Cnab.objects.get_or_create(**validated_data)
-        import ipdb
-
-        # ipdb.set_trace()
         return cnab
