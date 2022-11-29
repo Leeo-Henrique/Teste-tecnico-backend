@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload File</title>
+  </head>
+  <body>
+    <form
+      action="."
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <table>
+        {% for item in list %}
+        <tr>
+          <tr><h1>Dono: {{item.dono}}</h1></tr>
+        </tr>
+        <tr>
+          <td>Estabelecimento: {{item.nome_da_loja}}<br /></td>
+        </tr>
+        <table>
+          Saldo: {{item.balance}}
+        </table>
+        <table>
+          Operaçoes: {%for operation in item.operations%}
+          <tr>
+            <td>Tipo: {{operation.tipo}}</td>
+            <td>Valor: {{operation.valor}}</td>
+            <td>CPF: {{operation.cpf}}</td>
+            <td>Data: {{operation.data}}</td>
+            <td>Hora: {{operation.hora}}</td>
+          </tr>
+          {%endfor%}
+        </table>
+        <br />
+        {%endfor%}
+      </table>
+    </form>
+  </body>
+</html>
